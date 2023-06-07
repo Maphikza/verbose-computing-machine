@@ -9,7 +9,7 @@ import os
 import queue
 from PIL import Image
 from notification_manager import Notify
-# from email_notification import EmailNotify
+from email_notification import EmailNotify
 from multiprocessing import Process
 from numba import jit
 import gc
@@ -31,10 +31,10 @@ ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL")
 ADMIN_EMAIL_APP_PASSWORD = os.environ.get("ADMIN_EMAIL_APP_PASSWORD")
 DESTINATION_EMAIL = os.environ.get("DESTINATION_EMAIL")
 IMAGE_PATH = 'runs/detect/exp/image0.jpg'
-# email_notify = EmailNotify(admin_email_address=ADMIN_EMAIL,
-#                            admin_email_password=ADMIN_EMAIL_APP_PASSWORD,
-#                            to_email_address=DESTINATION_EMAIL,
-#                            img_path=IMAGE_PATH)
+email_notify = EmailNotify(admin_email_address=ADMIN_EMAIL,
+                           admin_email_password=ADMIN_EMAIL_APP_PASSWORD,
+                           to_email_address=DESTINATION_EMAIL,
+                           img_path=IMAGE_PATH)
 
 USERNAME = os.environ.get('APP_USERNAME')
 PASSWORD = os.environ.get('APP_PASSWORD')
