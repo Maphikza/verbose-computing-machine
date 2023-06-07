@@ -40,10 +40,6 @@ USERNAME = os.environ.get('APP_USERNAME')
 PASSWORD = os.environ.get('APP_PASSWORD')
 
 
-# directory_path = "C:/Program Files/ngrok-v3-stable-windows-amd64/"
-# subprocess.run(["ngrok", "http", "5000"], cwd=directory_path)
-# user = User(email="mkhulu", password="elgefefe")
-
 
 def clean_up_cam(path: str) -> None:
     path_cam_two = path
@@ -151,11 +147,11 @@ def cam_gen_frames(cam_name: str, cam_url: str, path: str, base_image_path: str,
                         base_image = None
                         gc.collect()
                     elif detection[5] == 0 and detection[4] > (base_conf_level - 0.30):
-                        # cam_two_image.save(f"{path}/{count}image.jpg")
-                        # notification.make_a_call()
-                        # notification.notify_me(f"A person has been detected on {camera_name} at {time.ctime()} "
-                        #                        f"check your camera to verify. You can review the pictures "
-                        #                        f"on your webapp.")
+                        cam_two_image.save(f"{path}/{count}image.jpg")
+                        notification.make_a_call()
+                        notification.notify_me(f"A person has been detected on {camera_name} at {time.ctime()} "
+                                               f"check your camera to verify. You can review the pictures "
+                                                f"on your webapp.")
                         print(f"Person found on {camera_name}, Please check it out"
                               f" before turning the monitoring on again")
                         print("SMS Notification sent.")
@@ -175,15 +171,15 @@ def cam_gen_frames(cam_name: str, cam_url: str, path: str, base_image_path: str,
                             print(f"{count}{detection[4]} {detection[5]} {time.ctime().replace(' ', '-')}")
                             if detected == 1:
                                 cam_results.show()
-                                # cam_two_image.save(f"{path}/{count}image.jpg")
-                                # notification.make_a_call()
-                                # notification.notify_me(f"A person has been detected on {camera_name} at {time.ctime()} "
-                                #                        f"check your camera to verify. You can review the pictures "
-                                #                        f"on your webapp.")
+                                cam_two_image.save(f"{path}/{count}image.jpg")
+                                notification.make_a_call()
+                                notification.notify_me(f"A person has been detected on {camera_name} at {time.ctime()} "
+                                                       f"check your camera to verify. You can review the pictures "
+                                                       f"on your webapp.")
                                 print(f"Person found on {camera_name}, score: {score}")
                                 print("SMS Notification sent.")
-                                # email_notify.send_message(time.ctime())
-                                # print("Email notification sent.")
+                                email_notify.send_message(time.ctime())
+                                print("Email notification sent.")
                                 detected = 0
 
                             if run and count > 0:
