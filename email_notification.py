@@ -32,34 +32,3 @@ class EmailNotify:
             smtp.starttls()
             smtp.login(self.email_address, self.email_password)
             smtp.sendmail(self.email_address, self.destination_email, message.as_string())
-
-# # 1.
-# # Your email account information
-# email_address = 'your_email_address'
-# email_password = 'your_email_password'
-#
-# # The recipient's email address
-# to_address = 'recipient_email_address'
-#
-# # 2.
-# # The email message
-# message = MIMEMultipart()
-# message['Subject'] = 'Check out this cool image!'
-# message['From'] = email_address
-# message['To'] = to_address
-#
-# # The path to the image file
-# image_path = 'runs/detect/exp/image0.jpg'
-#
-# # Opening and reading the image file
-# with open(image_path, 'rb') as f:
-#     image_data = f.read()
-#
-# # Creating the MIME image object and attaching it to the email message
-# image = MIMEImage(image_data, name=os.path.basename(image_path))
-# message.attach(image)
-#
-# # Sending the email message using smtplib
-# with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-#     smtp.login(email_address, email_password)
-#     smtp.sendmail(email_address, to_address, message.as_string())
